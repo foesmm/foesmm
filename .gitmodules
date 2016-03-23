@@ -1,0 +1,3 @@
+[submodule "libespmsharp"]
+	path = libespmsharp
+	url = https://github.com/foesmm/libespmsharp.git

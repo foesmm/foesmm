@@ -1,0 +1,31 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FoESMM.Common.Windows"
+        xmlns:Common="clr-namespace:FoESMM.Common;assembly=FoESMM.Common" x:Class="FoESMM.Common.Windows.GameChooserWindow"
+        mc:Ignorable="d"
+        Title="GameChooserWindow" Height="507.1" Width="880.395" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Choose game to manage" HorizontalAlignment="Center" Margin="10" Grid.Row="0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Grid x:Name="GamesGrid" Margin="10" Height="Auto" Width="Auto" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <CheckBox x:Name="Remember" Content="Remember selection" Margin="10" Grid.Row="2" Grid.Column="0" />
+        <Button x:Name="Start" Content="OK" Grid.Row="2" Grid.Column="1" Margin="10" MinWidth="128" IsEnabled="False" />
+    </Grid>
+</Window>

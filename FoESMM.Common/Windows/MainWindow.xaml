@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="window" x:Class="FoESMM.Common.Windows.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="558.273" Width="689.75" WindowStartupLocation="CenterScreen"
+    >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="334*"/>
+            <RowDefinition Height="134*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="493*"/>
+            <ColumnDefinition Width="189*"/>
+        </Grid.ColumnDefinitions>
+        <Menu IsMainMenu="True" Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Change Game" Command="{Binding ElementName=window, Path=SwitchGameCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Tools"/>
+        </Menu>
+        <DataGrid x:Name="LoadOrderGrid" Margin="10,0" Grid.Column="0" Grid.Row="1" />
+        <WebBrowser x:Name="ReadmeBrowser" Grid.Column="0" Grid.Row="2" Margin="10"/>
+        <TextBlock x:Name="PluginInfoBox" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" Margin="10"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,10,0">
+            <Image x:Name="GameIcon" Height="Auto"/>
+            <Button x:Name="LaunchButton" Margin="0,0,0,5" Command="{Binding ElementName=window, Path=RunDefaultCommand}" />
+            <Button x:Name="PackageManagerButton" Content="Package Manager" Margin="0,0,0,5"/>
+            <Button x:Name="SettingsButton" Content="Settings" Margin="0,0,0,5"/>
+        </StackPanel>
+        <StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <StatusBarItem>
+                <TextBlock x:Name="GameBox" Text="Game"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="ScriptExtenderBox" Text="Script Extender" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
