@@ -1,2 +1,6 @@
 install:
   - cmd: git submodule -q update --init
+
+build:
+  parallel: true     
+  project: FoESMM.sln
