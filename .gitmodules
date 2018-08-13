@@ -1,0 +1,6 @@
+[submodule "packages/libESP"]
+	path = packages/libESP
+	url = https://github.com/foesmm/libESP.git
+[submodule "packages/libBSA"]
+	path = packages/libBSA
+	url = https://github.com/foesmm/libBSA.git

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE8E5444-DCF9-4902-8EA6-40722103D57D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>foesmm.common</RootNamespace>
+    <AssemblyName>foesmm.common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.8\lib\net40-client\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CrashReporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrashReporter.Designer.cs">
+      <DependentUpon>CrashReporter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionExtension.cs" />
+    <Compile Include="FoESMM.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="game\IArchive.cs" />
+    <Compile Include="game\AbstractGame.cs" />
+    <Compile Include="game\IGame.cs" />
+    <Compile Include="game\IPlugin.cs" />
+    <Compile Include="game\IScriptExtender.cs" />
+    <Compile Include="game\IToolKit.cs" />
+    <Compile Include="game\ReleaseState.cs" />
+    <Compile Include="game\ScriptExtender.cs" />
+    <Compile Include="game\ToolKit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\packages\libBSA\libBSA\libBSA.csproj">
+      <Project>{f5cf3830-f5fb-43b9-8dce-d970757c7ebd}</Project>
+      <Name>libBSA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\packages\libESP\libESP\libESP.csproj">
+      <Project>{ca403dcf-8d46-48c0-9c47-5af0c214b18c}</Project>
+      <Name>libESP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrashReporter.resx">
+      <DependentUpon>CrashReporter.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
