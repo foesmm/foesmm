@@ -108,13 +108,16 @@ namespace foesmm.common
                 $"OS: {computerInfo.OSFullName} v{computerInfo.OSVersion}\n",
                 Wine.IsWine ? $"Wine: v{Wine.GetVersion()}, Host: {Wine.GetHost()}\n" : null,
                 $"Exception Signature: {exception.Guid()}\n",
-                $"Source: {Path.GetFileName(exception.FirstFrame().GetFileName())}:{exception.FirstFrame().GetFileLineNumber()}\n"
+                $"Source: {Path.GetFileName(exception.FirstFrame().GetFileName())}:{exception.FirstFrame().GetFileLineNumber()}\n",
+                exception.StackTrace
             );
-            do
+
+            var innerException = exception.InnerException;
+            while (innerException != null)
             {
-                dump += exception.ToString();
-                exception = exception.InnerException;
-            } while (exception != null);
+                dump += innerException.ToString();
+                innerException = innerException.InnerException;
+            };
 
             Log.F(dump);
             
