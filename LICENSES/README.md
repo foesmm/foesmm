@@ -1,5 +1,5 @@
-3rd Party Licenses
-==================
+Third Party Licenses
+====================
 
 Libraries
 ---------
