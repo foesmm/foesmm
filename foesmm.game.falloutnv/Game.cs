@@ -13,6 +13,7 @@ namespace foesmm.game.falloutnv
         public override int ReleaseYear => 2010;
         public override string Executable => "FalloutNV.exe";
         public override IScriptExtender ScriptExtender => InstallPath != null ? new NVSE(InstallPath) : null;
+        public override ISaveManager SaveManager => null;
         public override IToolKit ToolKit => InstallPath != null ? new GECK(InstallPath) : null;
     }
 }

@@ -17,11 +17,13 @@ namespace foesmm.common
         [DllImport("kernel32.dll")]
         private static extern bool FreeLibrary(IntPtr hModule);
 
+        // ReSharper disable InconsistentNaming
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate IntPtr wine_get_version();
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate IntPtr wine_get_host_version(out IntPtr host, out IntPtr release);
+        // ReSharper restore InconsistentNaming
 
         public static bool IsWine => GetVersion() != null;
 

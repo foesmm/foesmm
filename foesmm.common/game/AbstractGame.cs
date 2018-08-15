@@ -20,8 +20,10 @@ namespace foesmm.common.game
         public string InstallPath { get; protected set; }
         public string Version => InstallPath != null ? FileVersionInfo.GetVersionInfo(Path.Combine(InstallPath, Executable)).FileVersion : null;
         public string DataPath => InstallPath != null ? Path.Combine(InstallPath, "Data") : null;
-        public abstract IScriptExtender ScriptExtender { get; }
+
         public abstract IToolKit ToolKit { get; }
+        public abstract IScriptExtender ScriptExtender { get; }
+        public abstract ISaveManager SaveManager { get; }
 
         public string CrashTrace => $"Game: {Title} ({ReleaseState})\n";
 

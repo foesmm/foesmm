@@ -18,6 +18,9 @@ namespace foesmm
         [Option('r', "run", HelpText = "Start game.")]
         public bool StartGame { get; set; }
 
+        [Option("purge", HelpText = "Reset FoESMM settings.")]
+        public bool Purge { get; set; }
+
         [Option("log", HelpText = "Enable file logging.")]
         public bool Logging { get; set; }
 

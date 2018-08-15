@@ -13,6 +13,9 @@ namespace foesmm.common.game
         int ReleaseYear { get; }
         BitmapImage Cover { get; }
 
+        IScriptExtender ScriptExtender { get; }
+        ISaveManager SaveManager { get; }
+
         string CrashTrace { get; } 
     }
 }
