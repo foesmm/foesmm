@@ -28,18 +28,18 @@ namespace foesmm.common
             crashdumpContents.Lines = File.ReadAllLines(crashdump);
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void CloseClick(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void crashdumpButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ShowDumpClick(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("explorer.exe", $"/select,\"{Crashdump}\"");
         }
 
-        private void detailsButton_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void DetailsClick(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (crashdumpContents.Visible)
             {

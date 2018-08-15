@@ -62,7 +62,7 @@
             this.detailsButton.TabIndex = 1;
             this.detailsButton.TabStop = true;
             this.detailsButton.Text = "Show Details";
-            this.detailsButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.detailsButton_LinkClicked);
+            this.detailsButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DetailsClick);
             // 
             // closeButton
             // 
@@ -74,7 +74,7 @@
             this.closeButton.TabIndex = 2;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseClick);
             // 
             // crashdumpButton
             // 
@@ -87,7 +87,7 @@
             this.crashdumpButton.TabIndex = 3;
             this.crashdumpButton.TabStop = true;
             this.crashdumpButton.Text = "Show Crashdump";
-            this.crashdumpButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.crashdumpButton_LinkClicked);
+            this.crashdumpButton.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ShowDumpClick);
             // 
             // errorImage
             // 
