@@ -33,6 +33,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "foesmm.setup", "foesmm.setup\foesmm.setup.wixproj", "{3BE4CF61-FE83-4901-9F75-77CB4A6A781B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LICENSES", "LICENSES", "{255C1A4E-AB89-4377-B875-DBC3296E8657}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		LICENSES\PixelSagas.txt = LICENSES\PixelSagas.txt
+		LICENSES\README.md = LICENSES\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +121,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{255C1A4E-AB89-4377-B875-DBC3296E8657} = {6CE873C7-22E6-44C2-8EA1-F28BC61A37D1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {129E50AD-8E99-4DE4-957D-4B667C9334B7}
