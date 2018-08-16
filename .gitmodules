@@ -4,3 +4,6 @@
 [submodule "packages/libBSA"]
 	path = packages/libBSA
 	url = https://github.com/foesmm/libBSA.git
+[submodule "DirectX"]
+	path = DirectX
+	url = https://github.com/foesmm/DirectX.git

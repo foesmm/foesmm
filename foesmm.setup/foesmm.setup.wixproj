@@ -54,7 +54,7 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\packages\libBSA\libBSA\libBSA.csproj">
+    <ProjectReference Include="$(SolutionDir)\packages\libBSA\libBSA\libBSA.csproj">
       <Name>libBSA</Name>
       <Project>{f5cf3830-f5fb-43b9-8dce-d970757c7ebd}</Project>
       <Private>True</Private>
@@ -62,7 +62,7 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\packages\libESP\libESP\libESP.csproj">
+    <ProjectReference Include="$(SolutionDir)\packages\libESP\libESP\libESP.csproj">
       <Name>libESP</Name>
       <Project>{ca403dcf-8d46-48c0-9c47-5af0c214b18c}</Project>
       <Private>True</Private>

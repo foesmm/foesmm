@@ -32,10 +32,13 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.5.8\lib\net40-client\NLog.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\NLog.4.5.8\lib\net40-client\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="SharpCompress, Version=0.22.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\SharpCompress.0.22.0\lib\net35\SharpCompress.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -79,11 +82,11 @@
     <Compile Include="Wine.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\packages\libBSA\libBSA\libBSA.csproj">
+    <ProjectReference Include="$(SolutionDir)\packages\libBSA\libBSA\libBSA.csproj">
       <Project>{f5cf3830-f5fb-43b9-8dce-d970757c7ebd}</Project>
       <Name>libBSA</Name>
     </ProjectReference>
-    <ProjectReference Include="..\packages\libESP\libESP\libESP.csproj">
+    <ProjectReference Include="$(SolutionDir)\packages\libESP\libESP\libESP.csproj">
       <Project>{ca403dcf-8d46-48c0-9c47-5af0c214b18c}</Project>
       <Name>libESP</Name>
     </ProjectReference>

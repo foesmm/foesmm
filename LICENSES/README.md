@@ -5,6 +5,7 @@ Libraries
 ---------
 
 * [CommandLine](https://github.com/commandlineparser/commandline) MIT
+* DirectX 9
 * [NLog](https://github.com/NLog/NLog) BSD 3-Clause
 
 Fonts
