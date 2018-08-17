@@ -87,7 +87,7 @@ namespace foesmm.common
             logger.Log(level, message);
         }
 
-        public static void ProcessException(FoESMM app, Exception exception)
+        public static void ProcessException(IFoESMM app, Exception exception)
         {
             var appdata = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 Path.Combine("foesmm","crushdumps"));

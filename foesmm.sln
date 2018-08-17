@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foesmm", "foesmm\foesmm.csp
 	ProjectSection(ProjectDependencies) = postProject
 		{DD4FA338-1AD7-46AF-8697-09B22B088811} = {DD4FA338-1AD7-46AF-8697-09B22B088811}
 		{596C1242-68C3-4A76-85A0-6229491F650C} = {596C1242-68C3-4A76-85A0-6229491F650C}
+		{37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A} = {37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A}
 		{D3FBF2D8-C8A7-4F0C-8D8D-DAB14960C838} = {D3FBF2D8-C8A7-4F0C-8D8D-DAB14960C838}
 	EndProjectSection
 EndProject
@@ -47,6 +48,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shaders", "Shaders\Shaders.vcxproj", "{596C1242-68C3-4A76-85A0-6229491F650C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlive", "xlive\xlive.vcxproj", "{399F987B-6F9B-44A9-8AC8-BF5711AE8894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foesmm.common.Tests", "foesmm.common.Tests\foesmm.common.Tests.csproj", "{45BEB104-FA1E-4F8E-9798-C6D8E435183E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foesmm.game.oblivion", "foesmm.game.oblivion\foesmm.game.oblivion.csproj", "{37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +102,14 @@ Global
 		{399F987B-6F9B-44A9-8AC8-BF5711AE8894}.Debug|Any CPU.Build.0 = Release|Win32
 		{399F987B-6F9B-44A9-8AC8-BF5711AE8894}.Release|Any CPU.ActiveCfg = Release|Win32
 		{399F987B-6F9B-44A9-8AC8-BF5711AE8894}.Release|Any CPU.Build.0 = Release|Win32
+		{45BEB104-FA1E-4F8E-9798-C6D8E435183E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BEB104-FA1E-4F8E-9798-C6D8E435183E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BEB104-FA1E-4F8E-9798-C6D8E435183E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BEB104-FA1E-4F8E-9798-C6D8E435183E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C1E0D3-F0B1-424F-A3E1-107D45B5EE1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,8 +8,10 @@ namespace foesmm.common.game
 {
     public interface IGame
     {
+        World World { get; }
         ReleaseState ReleaseState { get; }
         string Title { get; }
+        string ShortTitle { get; }
         int ReleaseYear { get; }
         BitmapImage Cover { get; }
 

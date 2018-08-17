@@ -11,8 +11,11 @@ namespace foesmm.common.game
 {
     public abstract class AbstractGame : IGame
     {
+        public abstract World World { get; }
+
         public abstract ReleaseState ReleaseState { get; }
         public abstract string Title { get; }
+        public abstract string ShortTitle { get; }
         public abstract int ReleaseYear { get; }
         public BitmapImage Cover => new BitmapImage(new Uri($"pack://application:,,,/{GetType().Assembly.GetName().Name};component/Resources/cover.jpg"));
 

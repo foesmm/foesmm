@@ -15,7 +15,7 @@ namespace foesmm.common
     {
         private string Crashdump { get; set; }
 
-        public CrashReporter(FoESMM app, string reason, string crashdump)
+        public CrashReporter(IFoESMM app, string reason, string crashdump)
         {
             Crashdump = crashdump;
 

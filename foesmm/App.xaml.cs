@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Threading;
 using CommandLine;
 using foesmm.common;
@@ -18,9 +19,8 @@ namespace foesmm
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application, FoESMM
+    public partial class App : IFoESMM
     {
-        protected IEnumerable<IGame> AvailableGames;
         public IGame CurrentGame { get; set; }
 
         public string CrashTrace =>
@@ -41,31 +41,46 @@ namespace foesmm
         {
             base.OnStartup(e);
             
-            AvailableGames = PreloadGames();
-
             Parser.Default.ParseArguments<Options>(e.Args)
-                .WithParsed<Options>(opts => RunOptionsAndReturnExitCode(this, opts))
-                .WithNotParsed<Options>((errs) => HandleParseError(this, errs));
+                .WithParsed(opts => RunOptionsAndReturnExitCode(this, opts))
+                .WithNotParsed(errs => HandleParseError(this, errs));
         }
 
-        private void RunOptionsAndReturnExitCode(App app, Options opts)
+        private void RunOptionsAndReturnExitCode(IFoESMM app, Options opts)
         {
             Log.InitializeLogger(opts.Logging, opts.Trace);
             Log.I("foesmm started");
 
-            throw new Exception("Test exception");
+            string gameCodeBase;
+            if (opts.Game != null && File.Exists(gameCodeBase = Path.Combine(CurrentDirectory, $"foesmm.game.{opts.Game}.dll")))
+            {
+                var gameAssembly = new AssemblyName()
+                {
+                    CodeBase = gameCodeBase
+                };
+                var assembly = Assembly.Load(gameAssembly);
+                var gameType = assembly.GetTypes().First(type => typeof(IGame).IsAssignableFrom(type));
+                CurrentGame = (IGame) Activator.CreateInstance(gameType);
 
-            app.Shutdown();
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+            }
+            else
+            {
+                var chooser = new GameChooserWindow(PreloadGames());
+                if (chooser.ShowDialog() != true || CurrentGame == null) return;
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+            }
         }
 
-        private void HandleParseError(App app, IEnumerable<Error> errors)
+        private void HandleParseError(IFoESMM app, IEnumerable<Error> errors)
         {
             Console.WriteLine("Exit");
             app.Shutdown();
         }
 
-
-        private IEnumerable<IGame> PreloadGames()
+        private static IEnumerable<IGame> PreloadGames()
         {
             var games = Directory.EnumerateFiles(CurrentDirectory, "foesmm.game.*.dll");
 

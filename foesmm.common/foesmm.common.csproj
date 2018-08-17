@@ -63,6 +63,7 @@
     <Compile Include="ExceptionExtension.cs" />
     <Compile Include="FoESMM.cs" />
     <Compile Include="game\ISaveManager.cs" />
+    <Compile Include="game\World.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="game\IArchive.cs" />
     <Compile Include="game\AbstractGame.cs" />
