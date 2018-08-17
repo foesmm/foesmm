@@ -21,10 +21,34 @@ namespace foesmm
     /// </summary>
     public partial class App : IFoESMM
     {
-        public IGame CurrentGame { get; set; }
-
+        public IGame CurrentGame { get; private set; }
         public string CrashTrace =>
             $"FoESMM v{Assembly.GetExecutingAssembly().GetName().Version} crashed at {DateTime.UtcNow:R}\n";
+
+        public void ManageGame(IGame game)
+        {
+            CurrentGame = game;
+            var mainWindow = new MainWindow(game);
+            mainWindow.Show();
+        }
+
+        public void RunGame(IGame game, string profile = null)
+        {
+            CurrentGame = game;
+            throw new NotImplementedException();
+            Shutdown();
+        }
+
+        private static IGame LoadGame(string assemblyCodePage)
+        {
+            var gameAssembly = new AssemblyName()
+            {
+                CodeBase = assemblyCodePage
+            };
+            var assembly = Assembly.Load(gameAssembly);
+            var gameType = assembly.GetTypes().First(type => typeof(IGame).IsAssignableFrom(type));
+            return (IGame)Activator.CreateInstance(gameType);
+        }
 
         public static string CurrentDirectory
         {
@@ -40,7 +64,7 @@ namespace foesmm
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            
+
             Parser.Default.ParseArguments<Options>(e.Args)
                 .WithParsed(opts => RunOptionsAndReturnExitCode(this, opts))
                 .WithNotParsed(errs => HandleParseError(this, errs));
@@ -54,23 +78,21 @@ namespace foesmm
             string gameCodeBase;
             if (opts.Game != null && File.Exists(gameCodeBase = Path.Combine(CurrentDirectory, $"foesmm.game.{opts.Game}.dll")))
             {
-                var gameAssembly = new AssemblyName()
-                {
-                    CodeBase = gameCodeBase
-                };
-                var assembly = Assembly.Load(gameAssembly);
-                var gameType = assembly.GetTypes().First(type => typeof(IGame).IsAssignableFrom(type));
-                CurrentGame = (IGame) Activator.CreateInstance(gameType);
+                var game = LoadGame(gameCodeBase);
 
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
+                if (opts.StartGame)
+                {
+                    RunGame(game, opts.Profile);
+                }
+                else
+                {
+                    ManageGame(game);
+                }
             }
             else
             {
                 var chooser = new GameChooserWindow(PreloadGames());
-                if (chooser.ShowDialog() != true || CurrentGame == null) return;
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
+                chooser.Show();
             }
         }
 
@@ -85,7 +107,7 @@ namespace foesmm
             var games = Directory.EnumerateFiles(CurrentDirectory, "foesmm.game.*.dll");
 
             var preloadDomain = AppDomain.CreateDomain("Preload Domain");
-            var gameList = (from gameAssembly in games select new AssemblyName {CodeBase = gameAssembly} into assemblyName select preloadDomain.Load(assemblyName) into assembly select assembly.GetTypes().First(type => typeof(IGame).IsAssignableFrom(type)) into gameType select (IGame) Activator.CreateInstance(gameType)).OrderBy(game => game.ReleaseYear).ToList();
+            var gameList = games.Select(LoadGame).OrderBy(game => game.ReleaseYear).ToList();
             AppDomain.Unload(preloadDomain);
 
             return gameList;

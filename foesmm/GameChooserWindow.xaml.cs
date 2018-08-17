@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using foesmm.common;
 using foesmm.common.game;
+using foesmm.Resources;
 
 namespace foesmm
 {
@@ -29,6 +30,8 @@ namespace foesmm
             {
                 Games.Items.Add(game);
             }
+
+            MaxWidth = Math.Ceiling(Games.Items.Count / 2f + 1) * 200;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using foesmm.common.game;
 
 namespace foesmm
 {
@@ -18,7 +19,7 @@ namespace foesmm
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(IGame game)
         {
             InitializeComponent();
         }

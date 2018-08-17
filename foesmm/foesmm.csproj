@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Fonts\FontHelper.cs" />
     <Compile Include="GameChooserWindow.xaml.cs">
       <DependentUpon>GameChooserWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +75,8 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Options.cs" />
+    <Compile Include="Resources\ResourcesHelper.cs" />
+    <Compile Include="Shaders\GrayscaleEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -99,7 +103,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EmbeddedResource Include="Shaders\GrayscaleEffect.cso" />
+    <Resource Include="Shaders\GrayscaleEffect.cso" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\foesmm.common\foesmm.common.csproj">
@@ -123,6 +127,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Alpha.png" />
+    <Resource Include="Resources\Beta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Soon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

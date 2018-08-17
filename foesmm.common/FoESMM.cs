@@ -10,8 +10,10 @@ namespace foesmm.common
     public interface IFoESMM
     {
         IGame CurrentGame { get; }
-
         string CrashTrace { get; }
+
+        void ManageGame(IGame game);
+        void RunGame(IGame game, string profile = null);
 
         void Shutdown();
     }

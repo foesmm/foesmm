@@ -6,8 +6,21 @@
              xmlns:local="clr-namespace:foesmm"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Image x:Name="Cover" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="246"/>
-        <Label x:Name="Title" Content="Label" HorizontalAlignment="Left" Margin="98,314,0,0" VerticalAlignment="Top" FontSize="20"/>
+    <Grid Margin="10,0" MouseDown="Manage_Click">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="Cover" Height="150" Margin="0,0,0,0" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+        <Image x:Name="Overlay" Height="150" Margin="0,0,0,0" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+        <Label x:Name="Title" Content="Label" HorizontalAlignment="Center" Margin="0,5,0,5" VerticalAlignment="Top" FontSize="20" MaxWidth="120" Grid.ColumnSpan="2"
+               Grid.Column="0" Grid.Row="2"/>
+        <Button Name="Manage" Content="Manage" Margin="5,0,2,5" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Click="Manage_Click"/>
+        <Button Name="Run" Content="Run" Grid.Column="1" Margin="2,0,5,5" Grid.Row="1" VerticalAlignment="Bottom" Click="Run_OnClick "/>
     </Grid>
 </UserControl>

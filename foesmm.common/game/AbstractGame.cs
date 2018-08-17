@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Media.Imaging;
 
@@ -11,6 +12,9 @@ namespace foesmm.common.game
 {
     public abstract class AbstractGame : IGame
     {
+        public Guid Guid => new Guid(
+            ((GuidAttribute) GetType().Assembly.GetCustomAttributes(typeof(GuidAttribute), true)[0]).Value);
+
         public abstract World World { get; }
 
         public abstract ReleaseState ReleaseState { get; }

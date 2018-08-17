@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:foesmm"
         mc:Ignorable="d"
-        Title="GameChooserWindow" Height="450" Width="800">
-    <Grid>
+        Title="Choose Game" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,10,0,0">
         <ItemsControl Name="Games">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
