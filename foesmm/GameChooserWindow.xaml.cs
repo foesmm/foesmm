@@ -31,7 +31,7 @@ namespace foesmm
                 Games.Items.Add(game);
             }
 
-            MaxWidth = Math.Ceiling(Games.Items.Count / 2f + 1) * 200;
+            MaxWidth = Math.Ceiling(Games.Items.Count / 2f + 1) * 140;
         }
     }
 }

@@ -136,4 +136,8 @@
     <Resource Include="Resources\Soon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>powershell -command "&amp;Copy-Item \"$(SolutionDir)foesmm.game.*\$(OutDir)foesmm.game.*.dll\" \"$(TargetDir)\""
+powershell -command "&amp;Copy-Item \"$(SolutionDir)foesmm.game.*\$(OutDir)foesmm.game.*.pdb\" \"$(TargetDir)\""</PostBuildEvent>
+  </PropertyGroup>
 </Project>

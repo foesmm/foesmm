@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -22,8 +23,11 @@ namespace foesmm
     public partial class App : IFoESMM
     {
         public IGame CurrentGame { get; private set; }
+
+        public string Title => ((AssemblyTitleAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTitleAttribute), false))?.Title ?? "Unknown Title";
+        public string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public string CrashTrace =>
-            $"FoESMM v{Assembly.GetExecutingAssembly().GetName().Version} crashed at {DateTime.UtcNow:R}\n";
+            $"{Title} v{Version} crashed at {DateTime.UtcNow:R}\n";
 
         public void ManageGame(IGame game)
         {

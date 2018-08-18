@@ -9,6 +9,9 @@ namespace foesmm.common
     // ReSharper disable once InconsistentNaming
     public interface IFoESMM
     {
+        string Title { get; }
+        string Version { get; }
+
         IGame CurrentGame { get; }
         string CrashTrace { get; }
 
