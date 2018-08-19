@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using foesmm.common;
 using foesmm.common.game;
+using foesmm.helper;
 
 namespace foesmm
 {
@@ -31,6 +32,26 @@ namespace foesmm
             Game = game;
 
             Title = $"{App?.Title} v{App?.Version} - {Game.Title}";
+
+            if (!false)
+            {
+                var progress = new ProgressWindow("Configuring FoESM...", "Configuration")
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    Tasks = new[]
+                    {
+                        new Task(reporter =>
+                        {
+                            reporter.Step = $"Checking write access to {Game.Title} folder.";
+                            if (!FileAccess.HasWriteAccess(game.InstallPath))
+                            {
+                               
+                            }
+                        }),
+                    }
+                };
+                progress.ShowDialog();
+            }
         }
     }
 }

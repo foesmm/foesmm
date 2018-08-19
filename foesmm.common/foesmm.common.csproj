@@ -28,6 +28,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -64,6 +66,7 @@
     <Compile Include="FoESMM.cs" />
     <Compile Include="game\ISaveManager.cs" />
     <Compile Include="game\World.cs" />
+    <Compile Include="IProgress.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="game\IArchive.cs" />
     <Compile Include="game\AbstractGame.cs" />
@@ -80,6 +83,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RegistryHelper.cs" />
+    <Compile Include="Task.cs" />
     <Compile Include="Wine.cs" />
   </ItemGroup>
   <ItemGroup>

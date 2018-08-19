@@ -17,5 +17,14 @@ namespace foesmm.game.fallout3
         public override IScriptExtender ScriptExtender => null;
         public override ISaveManager SaveManager => null;
         public override IToolKit ToolKit => null;
+
+        protected override string[] GOGKeys => new[] {"1248282609", "1454315831"};
+        protected override string[] SteamKeys => new[] {"Steam App 22300", "Steam App 22370"};
+        protected override Dictionary<string, string> RetailKeys => new Dictionary<string, string>
+        {
+            {
+                @"Software\Bethesda Softworks\Fallout3", @"installed path"
+            }
+        };
     }
 }

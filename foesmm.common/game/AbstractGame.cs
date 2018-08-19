@@ -7,13 +7,14 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 
 namespace foesmm.common.game
 {
     public abstract class AbstractGame : IGame
     {
         public Guid Guid => new Guid(
-            ((GuidAttribute) GetType().Assembly.GetCustomAttributes(typeof(GuidAttribute), true)[0]).Value);
+            ((GuidAttribute)GetType().Assembly.GetCustomAttributes(typeof(GuidAttribute), true)[0]).Value);
 
         public abstract World World { get; }
 
@@ -33,6 +34,10 @@ namespace foesmm.common.game
         public abstract ISaveManager SaveManager { get; }
 
         public string CrashTrace => $"Game: {Title} ({ReleaseState})\n";
+
+        protected abstract string[] GOGKeys { get; }
+        protected abstract string[] SteamKeys { get; }
+        protected abstract Dictionary<string, string> RetailKeys { get; }
 
         public override string ToString()
         {
@@ -86,6 +91,7 @@ namespace foesmm.common.game
 
         protected bool IsValidGameFolder(string path)
         {
+            if (path == null) return false;
             return File.Exists(Path.Combine(path, Executable));
         }
 
@@ -100,9 +106,36 @@ namespace foesmm.common.game
             Archives = new List<IArchive>();
         }
 
-        public string DetectInstallation()
+        protected void DetectInstallationGOG()
         {
-            throw new NotImplementedException();
+            InstallPath = RegistryHelper.CheckInstallInfo(@"Software\GOG.com\Games", GOGKeys, "path");
+        }
+
+        protected void DetectInstallationSteam()
+        {
+            //
+            InstallPath = RegistryHelper.CheckInstallInfo(@"Software\Microsoft\Windows\CurrentVersion\Uninstall",
+                SteamKeys, "InstallLocation");
+        }
+
+        protected void DetectInstallationRetail()
+        {
+//                RegistryHelper.CheckInstallInfo(@"\", RetailKeys, "");
+        }
+
+        public bool DetectInstallation(string installPath = null)
+        {
+            if (installPath != null && IsValidGameFolder(installPath))
+            {
+                InstallPath = installPath;
+                return true;
+            }
+
+            if (IsValidGameFolder(InstallPath)) return true;
+            DetectInstallationGOG();
+            DetectInstallationSteam();
+            DetectInstallationRetail();
+            return IsValidGameFolder(InstallPath);
         }
 
         public IList<IPlugin> Plugins { get; protected set; }

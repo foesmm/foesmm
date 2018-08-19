@@ -17,5 +17,12 @@ namespace foesmm.game.falloutnv
         public override IScriptExtender ScriptExtender => InstallPath != null ? new NVSE(InstallPath) : null;
         public override ISaveManager SaveManager => null;
         public override IToolKit ToolKit => InstallPath != null ? new GECK(InstallPath) : null;
+
+        protected override string[] GOGKeys => new[] {"1312824873", "1454587428"};
+        protected override string[] SteamKeys => new[] {"Steam App 22380", "Steam App 22490"};
+        protected override Dictionary<string, string> RetailKeys => new Dictionary<string, string>
+        {
+            {@"Software\Bethesda Softworks\falloutnv", @"installed path"}
+        };
     }
 }

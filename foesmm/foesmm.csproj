@@ -31,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>foesmm.ico</ApplicationIcon>
@@ -75,6 +76,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Options.cs" />
+    <Compile Include="ProgressWindow.xaml.cs">
+      <DependentUpon>ProgressWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\ResourcesHelper.cs" />
     <Compile Include="Shaders\GrayscaleEffect.cs" />
   </ItemGroup>
@@ -110,6 +114,10 @@
       <Project>{ae8e5444-dcf9-4902-8ea6-40722103d57d}</Project>
       <Name>foesmm.common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\helper\Helper\Helper.csproj">
+      <Project>{5bbc198d-cfa5-4912-be13-c87462822d05}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="foesmm.ico" />
@@ -124,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

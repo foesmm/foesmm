@@ -15,7 +15,9 @@ namespace foesmm.common
         IGame CurrentGame { get; }
         string CrashTrace { get; }
 
+        void ManageGame(string assemblyCodeBase, string installPath);
         void ManageGame(IGame game);
+        void RunGame(string assemblyCodeBase, string profile = null);
         void RunGame(IGame game, string profile = null);
 
         void Shutdown();

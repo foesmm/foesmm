@@ -29,11 +29,23 @@ namespace foesmm
         public string CrashTrace =>
             $"{Title} v{Version} crashed at {DateTime.UtcNow:R}\n";
 
+        public void ManageGame(string assemblyCodeBase, string installDir)
+        {
+            var game = LoadGame(assemblyCodeBase);
+            game.DetectInstallation(installDir);
+            ManageGame(game);
+        }
+
         public void ManageGame(IGame game)
         {
             CurrentGame = game;
             var mainWindow = new MainWindow(game);
             mainWindow.Show();
+        }
+
+        public void RunGame(string assemblyCodeBase, string profile = null)
+        {
+            RunGame(LoadGame(assemblyCodeBase), profile);
         }
 
         public void RunGame(IGame game, string profile = null)
@@ -43,13 +55,13 @@ namespace foesmm
             Shutdown();
         }
 
-        private static IGame LoadGame(string assemblyCodePage)
+        private static IGame LoadGame(string assemblyCodePage, AppDomain domain = null)
         {
             var gameAssembly = new AssemblyName()
             {
                 CodeBase = assemblyCodePage
             };
-            var assembly = Assembly.Load(gameAssembly);
+            var assembly = domain == null ? Assembly.Load(gameAssembly) : domain.Load(gameAssembly);
             var gameType = assembly.GetTypes().First(type => typeof(IGame).IsAssignableFrom(type));
             return (IGame)Activator.CreateInstance(gameType);
         }
@@ -111,7 +123,7 @@ namespace foesmm
             var games = Directory.EnumerateFiles(CurrentDirectory, "foesmm.game.*.dll");
 
             var preloadDomain = AppDomain.CreateDomain("Preload Domain");
-            var gameList = games.Select(LoadGame).OrderBy(game => game.ReleaseYear).ToList();
+            var gameList = games.Select(gameAssembly => LoadGame(gameAssembly, preloadDomain)).OrderBy(game => game.ReleaseYear).ToList();
             AppDomain.Unload(preloadDomain);
 
             return gameList;

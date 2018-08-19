@@ -15,10 +15,14 @@ namespace foesmm.common.game
         int ReleaseYear { get; }
         BitmapImage Cover { get; }
 
+        string InstallPath { get; }
+
         IToolKit ToolKit { get; }
         IScriptExtender ScriptExtender { get; }
         ISaveManager SaveManager { get; }
 
-        string CrashTrace { get; } 
+        string CrashTrace { get; }
+
+        bool DetectInstallation(string installPath = null);
     }
 }

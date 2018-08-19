@@ -17,5 +17,9 @@ namespace foesmm.game.fallout4
         public override IToolKit ToolKit => null;
         public override IScriptExtender ScriptExtender => null;
         public override ISaveManager SaveManager => null;
+
+        protected override string[] GOGKeys => null;
+        protected override string[] SteamKeys => null;
+        protected override Dictionary<string, string> RetailKeys => null;
     }
 }

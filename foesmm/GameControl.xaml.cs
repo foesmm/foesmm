@@ -45,7 +45,7 @@ namespace foesmm
                 var effect = new GrayscaleEffect();
                 control.Cover.Effect = effect;
 
-                if (true)
+                if (!game.DetectInstallation())
                 {
                     effect.DesaturationFactor = 0;
                     control.Manage.SetValue(Grid.ColumnSpanProperty, 2);
@@ -55,7 +55,7 @@ namespace foesmm
                 }
                 else
                 {
-                    
+                    effect.DesaturationFactor = 1;
                 }
             }
             else
@@ -92,7 +92,7 @@ namespace foesmm
                 (parentWindow = Window.GetWindow(this) as GameChooserWindow) == null ||
                 (app = Application.Current as IFoESMM) == null) return;
 
-            app.ManageGame(Game);
+            app.ManageGame(Game.GetType().Assembly.CodeBase, Game.InstallPath);
             parentWindow.Close();
         }
 
@@ -104,7 +104,7 @@ namespace foesmm
                 (parentWindow = Window.GetWindow(this) as GameChooserWindow) == null ||
                 (app = Application.Current as IFoESMM) == null) return;
 
-            app.RunGame(Game);
+            app.RunGame(Game.GetType().Assembly.CodeBase);
             parentWindow.Close();
         }
     }

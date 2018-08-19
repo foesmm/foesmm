@@ -7,3 +7,6 @@
 [submodule "DirectX"]
 	path = DirectX
 	url = https://github.com/foesmm/DirectX.git
+[submodule "helper"]
+	path = helper
+	url = https://github.com/foesmm/helper.git
