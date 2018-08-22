@@ -42,7 +42,7 @@ namespace foesmm
                     {
                         new Task(reporter =>
                         {
-                            reporter.Step = $"Checking write access to {Game.Title} folder.";
+                            reporter.Overall = $"Checking write access to {Game.Title} folder.";
                             if (!FileAccess.HasWriteAccess(game.InstallPath))
                             {
                                

@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Name="TaskTitleLabel" Content="Task Title" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontWeight="Bold"/>
-        <Label Name="OverallLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"/>
+        <Label Name="OverallLabel" Content="Starting..." HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"/>
         <ProgressBar Name="OverallProgress"  HorizontalAlignment="Stretch" Height="15" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" IsIndeterminate="True"/>
         <Label Name="StepLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="3" Visibility="Collapsed"/>
         <ProgressBar Name="StepProgress" HorizontalAlignment="Stretch" Height="15" Margin="0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="4" IsIndeterminate="True" Visibility="Collapsed"/>

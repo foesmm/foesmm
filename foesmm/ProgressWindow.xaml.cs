@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -30,13 +31,24 @@ namespace foesmm
         public string Overall
         {
             get => OverallLabel.Content.ToString();
-            set => OverallLabel.Content = value;
+            set {
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    OverallLabel.Content = value;
+                }));
+            }
         }
 
         public double OverallDone
         {
             get => OverallProgress.Value;
-            set => OverallProgress.Value = value;
+            set
+            {
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    OverallProgress.Value = value;
+                }));
+            }
         }
 
         public double OverallTotal
@@ -44,8 +56,11 @@ namespace foesmm
             get => OverallProgress.Maximum;
             set
             {
-                OverallProgress.IsIndeterminate = value <= 0;
-                OverallProgress.Maximum = value;
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    OverallProgress.IsIndeterminate = value <= 0;
+                    OverallProgress.Maximum = value;
+                }));
             }
         }
 
@@ -54,16 +69,24 @@ namespace foesmm
             get => StepLabel.Content.ToString();
             set
             {
-                StepLabel.Visibility = string.IsNullOrEmpty(value) ? Visibility.Collapsed : Visibility.Visible;
-                StepProgress.Visibility = string.IsNullOrEmpty(value) ? Visibility.Collapsed : Visibility.Visible;
-                StepLabel.Content = value;
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    StepLabel.Visibility = string.IsNullOrEmpty(value) ? Visibility.Collapsed : Visibility.Visible;
+                    StepProgress.Visibility = string.IsNullOrEmpty(value) ? Visibility.Collapsed : Visibility.Visible;
+                    StepLabel.Content = value;
+                }));
             }
         }
 
         public double StepDone
         {
             get => StepProgress.Value;
-            set => StepProgress.Value = value;
+            set{
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    StepProgress.Value = value;
+                }));
+            }
         }
 
         public double StepTotal
@@ -71,8 +94,11 @@ namespace foesmm
             get => StepProgress.Maximum;
             set
             {
-                StepProgress.IsIndeterminate = value <= 0;
-                StepProgress.Maximum = value;
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    StepProgress.IsIndeterminate = value <= 0;
+                    StepProgress.Maximum = value;
+                }));
             }
         }
 
@@ -99,25 +125,32 @@ namespace foesmm
             if (_windowShown) return;
             _windowShown = true;
 
-            foreach (var task in Tasks)
+            System.Threading.Tasks.Task.Factory.StartNew(() =>
             {
-                if (_rollback) break;
-                CurrentTask = task;
-                task.ApplyAction(this);
-                CompletedTasks.Insert(0, CurrentTask);
-                CurrentTask = null;
-            }
-
-            if (_rollback)
-            {
-                foreach (var completedTask in CompletedTasks)
+                foreach (var task in Tasks)
                 {
-                    completedTask.RollbackAction?.Invoke(this);
+                    if (_rollback) break;
+                    CurrentTask = task;
+                    task.ApplyAction(this);
+                    CompletedTasks.Insert(0, CurrentTask);
+                    CurrentTask = null;
                 }
-            }
 
-            _completed = true;
-            DialogResult = _rollback;
+                if (_rollback)
+                {
+                    foreach (var completedTask in CompletedTasks)
+                    {
+                        completedTask.RollbackAction?.Invoke(this);
+                    }
+                }
+
+                _completed = true;
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    DialogResult = _rollback;
+
+                }));
+            });
         }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
