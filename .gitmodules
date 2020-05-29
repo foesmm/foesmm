@@ -1,0 +1,3 @@
+[submodule "foesmm.data"]
+	path = foesmm.data
+	url = https://github.com/foesmm/data

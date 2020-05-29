@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <RootNamespace>foesmm</RootNamespace>
+    <Configurations>Release;Debug</Configurations>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Eto.Forms" Version="2.5.0" />
+    <PackageReference Include="Faithlife.Utility" Version="0.8.0" />
+    <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
+    <PackageReference Include="Lnk" Version="1.1.0.1" />
+    <PackageReference Include="NGettext" Version="0.6.5" />
+    <PackageReference Include="NLog" Version="4.7.0" />
+    <PackageReference Include="PListNet" Version="3.2.0" />
+    <PackageReference Include="SerialQueue" Version="2.1.0" />
+    <PackageReference Include="SharpCompress" Version="0.25.0" />
+    <PackageReference Include="System.Data.HashFunction.xxHash" Version="2.0.0" />
+  </ItemGroup>
+  
+</Project>

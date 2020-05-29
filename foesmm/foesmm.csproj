@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net461</TargetFramework>
+    <Configurations>Release;Debug</Configurations>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Wpf" Version="2.5.0" />
+    <PackageReference Include="Eto.Platform.Gtk" Version="2.5.0" />
+    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.306" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\foesmm.common\foesmm.common.csproj" />
+  </ItemGroup>
+	
+</Project>
